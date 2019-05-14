@@ -1,3 +1,7 @@
+/**
+ * Note: medicine name and attributes should be changed
+ */
+
 package project;
 
 enum Medicine {

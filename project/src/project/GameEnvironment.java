@@ -24,7 +24,7 @@ public class GameEnvironment {
 		FoodItem food1 = new FoodItem(Food.FOOD1);
 		MedicalItem Medicine1 = new MedicalItem(Medicine.MEDICINE1);
 		
-		Ryan.setName("Hillary Clinton");
+		Ryan.setName("test name");
 		Ryan.feed(food1);
 		Ryan.consumeMedicalItem(Medicine1);
 		System.out.println(Ryan.getStatus());

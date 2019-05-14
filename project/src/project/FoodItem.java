@@ -1,3 +1,8 @@
+/**
+ * note: Food Item and its attributes should be renamed
+ * 		to create food item FoodItem(Food.FOODNAME)
+ */
+
 package project;
 
 enum Food {
@@ -52,5 +57,9 @@ public class FoodItem {
 	public int getNutrition() {
 		return nutrition;
 	}
-
+	
+	public int getPrice() {
+		return price;
+	}
+	
 }

@@ -1,6 +1,7 @@
 /**
- * The CrewInfo Class is used to store information regarding 
- * CrewMembers, ship name/health, total money and food/medical items obtained.
+ * 
+ *	The CrewInfo Class is used to store information regarding 
+ *  CrewMembers, ship name/health, total money and food/medical items obtained
  */
 
 
@@ -57,6 +58,9 @@ public class CrewInfo {
 		ShipName = newName;
 	}
 	
+	/**
+	 * temp test code below
+	 */
 	
 	public static void main(String[] args) {
 		CrewInfo crewInfo = new CrewInfo();

@@ -1,3 +1,8 @@
+/**
+ * note: The member type and the attributes should be changed
+ */
+
+
 package project;
 
 enum Type {
