@@ -93,11 +93,6 @@ public class CrewMember {
 		tiredness = tiredness / 2;
 	}
 	
-	public void status() {
-		System.out.println(hunger);
-		System.out.println(health);
-	}
-	
 	public String getStatus() {
 		return name + "\nHealth: " + health + "\nTiredness: " + tiredness
 				+ "\nHunger: " + hunger;

@@ -1,3 +1,7 @@
+/** 
+ * Just test code for now
+ */
+
 package project;
 
 public class GameEnvironment {	
