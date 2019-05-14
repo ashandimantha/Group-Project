@@ -12,8 +12,9 @@ enum Type {
 public class CrewMember {
 	private String name = "Untitled";
 	private int health = 100;
-	private int hunger = 100;
-	private int tiredness = 100;
+	private int hunger = 0;
+	private int tiredness = 0;
+	private int NumberOfMoves = 2;
 	private boolean hasPlague = false;
 	
 	int healthDecrease;
@@ -25,34 +26,34 @@ public class CrewMember {
 	public void setType(Type type) {
         switch (type) {
         case TYPE1:
-            healthDecrease = 10;
+            healthDecrease = 20;
             hungerDecrease = 10;
             tirednessDecrease = 10;
             break;
         case TYPE2:
             healthDecrease = 10;
-            hungerDecrease = 10;
+            hungerDecrease = 30;
             tirednessDecrease = 10;
             break;
         case TYPE3:
-            healthDecrease = 10;
+            healthDecrease = 20;
             hungerDecrease = 10;
-            tirednessDecrease = 10;
+            tirednessDecrease = 15;
             break;
         case TYPE4:
             healthDecrease = 10;
-            hungerDecrease = 10;
+            hungerDecrease = 20;
             tirednessDecrease = 10;
             break;
         case TYPE5:
-            healthDecrease = 10;
+            healthDecrease = 15;
             hungerDecrease = 10;
             tirednessDecrease = 10;
             break;
         case TYPE6:
             healthDecrease = 10;
             hungerDecrease = 10;
-            tirednessDecrease = 10;
+            tirednessDecrease = 20;
             break;
         }	
 	}
@@ -79,12 +80,17 @@ public class CrewMember {
 		return hunger;
 	}
 	
+	public int getNumberOfMoves() {
+		return NumberOfMoves;
+	}
 	
 	public void feed(FoodItem food) {
+		NumberOfMoves -= 1;
 		hunger += food.getNutrition();
 	}
 	
 	public void consumeMedicalItem(MedicalItem item) {
+		NumberOfMoves -= 1;
 		if (item.CuresPlague() && hasPlague) {
 			hasPlague = false;
 			health += item.getHealthIncrease();
@@ -95,7 +101,8 @@ public class CrewMember {
 	}
 	
 	public void sleep() {
-		tiredness = tiredness / 2;
+		NumberOfMoves -= 1;
+		tiredness = 0;
 	}
 	
 	public String getStatus() {

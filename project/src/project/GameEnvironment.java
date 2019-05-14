@@ -5,31 +5,32 @@
 package project;
 
 public class GameEnvironment {	
-	private double NumberOfDays;
-	private double NumberOfPieces = Math.floor(NumberOfDays*0.75);
+	public double NumberOfDays;
 		
 	public void setCrewInfo() {
 		CrewInfo crewInfo = new CrewInfo();
 		
 	}
 	
+	public void setNumberOfDays(double newNumber) {
+		NumberOfDays = newNumber;
+	}
 	
+	public double getNumberOfPieces() {
+		return Math.floor(NumberOfDays*0.66);
+	}
 	
 	
 	
 	public static void main(String[] args) {
-		GameEnvironment game = new GameEnvironment();
+		GameEnvironment gameEnvironment = new GameEnvironment();
+		gameEnvironment.setNumberOfDays(4);
+
+		System.out.println(gameEnvironment.getNumberOfPieces());
 		
-		CrewMember Ryan = new CrewMember();
-		FoodItem food1 = new FoodItem(Food.FOOD1);
-		MedicalItem Medicine1 = new MedicalItem(Medicine.MEDICINE1);
+		}
 		
-		Ryan.setName("test name");
-		Ryan.feed(food1);
-		Ryan.consumeMedicalItem(Medicine1);
-		System.out.println(Ryan.getStatus());
-		
-	}
+
 	
 
 }
