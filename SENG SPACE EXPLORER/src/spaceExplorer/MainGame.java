@@ -49,12 +49,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
+import java.awt.Cursor;
+import java.awt.ComponentOrientation;
 
 public class MainGame extends JFrame {
 
 	private JPanel contentPane;
 	private String MemberName;
-	public LinkedList<JButton> linkedList = new LinkedList<JButton>();
+	public LinkedList<JButton> btnList = new LinkedList<JButton>();
 	
 	/**
 	 * Launch the application.
@@ -79,7 +81,6 @@ public class MainGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1280, 720);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -147,7 +148,7 @@ public class MainGame extends JFrame {
 		progressBar_1.setToolTipText("");
 		progressBar_1.setForeground(new Color(127, 255, 0));
 		progressBar_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		progressBar_1.setBackground(UIManager.getColor("ProgressBar.background"));
+		progressBar_1.setBackground(UIManager.getColor("text"));
 		contentPane.add(progressBar_1);
 		
 		JLabel lblTiredness = new JLabel("TIREDNESS");
@@ -158,7 +159,7 @@ public class MainGame extends JFrame {
 		progressBar_2.setToolTipText("");
 		progressBar_2.setForeground(new Color(255, 215, 0));
 		progressBar_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		progressBar_2.setBackground(UIManager.getColor("ProgressBar.background"));
+		progressBar_2.setBackground(UIManager.getColor("window"));
 		progressBar_2.setBounds(410, 180, 171, 25);
 		contentPane.add(progressBar_2);
 		
@@ -170,7 +171,7 @@ public class MainGame extends JFrame {
 		progressBar_3.setToolTipText("");
 		progressBar_3.setForeground(new Color(255, 215, 0));
 		progressBar_3.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		progressBar_3.setBackground(new Color(255, 255, 255));
+		progressBar_3.setBackground(UIManager.getColor("window"));
 		progressBar_3.setBounds(410, 226, 171, 25);
 		contentPane.add(progressBar_3);
 		
@@ -181,14 +182,14 @@ public class MainGame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel.setBounds(598, 308, 299, 355);
+		panel.setBounds(591, 308, 299, 355);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnEat = new JButton("Use Items");							//btnEat  btnSleep  btnRepairShip  btnLoot  btnExplorePlanet
-		btnEat.setEnabled(false);
-		btnEat.setBounds(59, 27, 181, 38);
-		panel.add(btnEat);
+		JToggleButton btnUseItem = new JToggleButton("Use Items");							//btnEat  btnSleep  btnRepairShip  btnLoot  btnExplorePlanet
+		btnUseItem.setEnabled(false);
+		btnUseItem.setBounds(59, 27, 181, 38);
+		panel.add(btnUseItem);
 		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.setEnabled(false);
@@ -217,13 +218,65 @@ public class MainGame extends JFrame {
 		panel_1.setLayout(null);
 		
 		JLabel lblInventory = new JLabel("Inventory");
-		lblInventory.setFont(new Font("Roboto", Font.BOLD, 20));
-		lblInventory.setBounds(194, 11, 104, 24);
+		lblInventory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInventory.setFont(new Font("Agency FB", Font.BOLD, 28));
+		lblInventory.setBounds(187, 0, 148, 49);
 		panel_1.add(lblInventory);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(10, 51, 89, 23);
-		panel_1.add(btnNewButton_2);
+		JButton button_3 = new JButton("");
+		button_3.setVisible(false);
+		button_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_3.setContentAreaFilled(false);
+		button_3.setBorderPainted(false);
+		button_3.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/Bread.png")));
+		button_3.setBounds(20, 109, 63, 60);
+		panel_1.add(button_3);
+		
+		JButton button_4 = new JButton("");
+		button_4.setVisible(false);
+		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_4.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/Toffee.png")));
+		button_4.setContentAreaFilled(false);
+		button_4.setBorderPainted(false);
+		button_4.setBounds(103, 109, 63, 60);
+		panel_1.add(button_4);
+		
+		JButton button_5 = new JButton("");
+		button_5.setVisible(false);
+		button_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_5.setContentAreaFilled(false);
+		button_5.setBorderPainted(false);
+		button_5.setBounds(186, 109, 63, 60);
+		panel_1.add(button_5);
+		
+		JButton button_6 = new JButton("");
+		button_6.setVisible(false);
+		button_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_6.setContentAreaFilled(false);
+		button_6.setBorderPainted(false);
+		button_6.setBounds(269, 109, 63, 60);
+		panel_1.add(button_6);
+		
+		JButton button_7 = new JButton("");
+		button_7.setVisible(false);
+		button_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_7.setContentAreaFilled(false);
+		button_7.setBorderPainted(false);
+		button_7.setBounds(352, 109, 63, 60);
+		panel_1.add(button_7);
+		
+		JButton button_8 = new JButton("");
+		button_8.setVisible(false);
+		button_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_8.setContentAreaFilled(false);
+		button_8.setBorderPainted(false);
+		button_8.setBounds(435, 109, 63, 60);
+		panel_1.add(button_8);
+		
+		JButton btnInventoryChange = new JButton("");
+		btnInventoryChange.setVisible(false);
+		btnInventoryChange.setBounds(216, 60, 89, 29);
+		panel_1.add(btnInventoryChange);
 		
 		JLabel lblMoney = new JLabel("Money: $" + GameEnvironment.money);
 		lblMoney.setHorizontalAlignment(SwingConstants.CENTER);
@@ -279,6 +332,16 @@ public class MainGame extends JFrame {
 			lblMoney.setText("Money: $" + GameEnvironment.money);
 		}
 		
+		crewinfo.addFoodItem(Food.BREAD);
+		crewinfo.addFoodItem(Food.BURGER);
+			
+		btnList.add(button_3);
+		btnList.add(button_4);
+		btnList.add(button_5);
+		btnList.add(button_6);
+		btnList.add(button_7);
+		btnList.add(button_8);
+		
 		GameEnvironment.actions = crewinfo.CrewList.size() * 2;
 		
 		
@@ -303,8 +366,6 @@ public class MainGame extends JFrame {
 //					btnNewButton.repaint();
 //				}
 				
-				//add buttons to a list
-				linkedList.add(btnNewButton);
 				
 			}
 			
@@ -312,24 +373,18 @@ public class MainGame extends JFrame {
 				button.setText(MemberName);
 				button.setToolTipText("Ability: " + i.ability);
 				
-				//add buttons to a list
-				linkedList.add(button);
 			}
 			
 			if (crewNum == 2) {
 				button_1.setText(MemberName);			
 				button_1.setToolTipText("Ability: " + i.ability);
 				
-				//add buttons to a list
-				linkedList.add(button_1);
 			}
 			
 			if (crewNum == 3) {
 				button_2.setText(MemberName);
 				button_2.setToolTipText("Ability: " + i.ability);
 				
-				//add buttons to a list
-				linkedList.add(button_2);
 			}
 			
 			crewNum += 1;
@@ -340,10 +395,8 @@ public class MainGame extends JFrame {
 		 * 
 		 * setting actions
 		 * 
-		 */
-		tglbtnNewToggleButton.setEnabled(false);
-		
-		JLabel lblShipPieces = new JLabel("Ship Pieces: 0");
+		 */		
+		JLabel lblShipPieces = new JLabel("Transporter Parts: 0");
 		lblShipPieces.setHorizontalAlignment(SwingConstants.CENTER);
 		lblShipPieces.setFont(new Font("Palatino Linotype", Font.PLAIN, 25));
 		lblShipPieces.setBounds(291, 395, 268, 39);
@@ -352,14 +405,15 @@ public class MainGame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (tglbtnNewToggleButton.isSelected()) {						//ENABLE btnEat  btnSleep  btnRepairShip  btnLoot  btnExplorePlanet
 //					System.out.println("A");
-					btnEat.setEnabled(true);
+					btnUseItem.setEnabled(true);
 					btnSleep.setEnabled(true);
 					btnRepairShip.setEnabled(true);
 					btnLoot.setEnabled(true);
 					btnExplorePlanet.setEnabled(true);
 				} else {
 //					System.out.println("B");
-					btnEat.setEnabled(false);
+					btnUseItem.setEnabled(false);
+					btnUseItem.setSelected(false);
 					btnSleep.setEnabled(false);
 					btnRepairShip.setEnabled(false);
 					btnLoot.setEnabled(false);
@@ -490,62 +544,85 @@ public class MainGame extends JFrame {
 			tglbtnNewToggleButton.setEnabled(false);
 		}
 		
+		
+		
 		/*
 		 * 
 		 * USE ITEMS FROM THE INVENTORY
 		 * 
 		 */
-		btnEat.addActionListener(new ActionListener() {
+		btnUseItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves > 0) {
-//					textPane.se
-					crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves -= 1;
+				if (btnUseItem.isSelected()) {
+					if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves > 0) {
+						
+						//ADDING ITEMS TO THE INVENTORY
+						btnInventoryChange.setVisible(true);
+						btnInventoryChange.setText("Food");
+						
+						int j = 0;
+						for (FoodItem i: crewinfo.FoodList) {						//FOOD BUTTON ICONS
+							btnList.get(j).setVisible(true);
+							btnList.get(j).setIcon(new ImageIcon(MainGame.class.getResource(i.imageIcon)));
+							j += 1;
+						}
+					}
+					
+					//Disable actions after number of moves == 0
+					if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves <= 0) {
+						btnUseItem.setEnabled(false);
+						btnUseItem.setSelected(false);
+						btnSleep.setEnabled(false);
+						btnRepairShip.setEnabled(false);
+						btnLoot.setEnabled(false);
+						btnExplorePlanet.setEnabled(false);
+						tglbtnNewToggleButton.setSelected(false);
+						tglbtnNewToggleButton.setEnabled(false);
+					}
+					tglbtnNewToggleButton.revalidate();
+					tglbtnNewToggleButton.repaint();
+					
+					
+				} else {												//BUTTON NOT SELECTED
+					for (JButton i: btnList) {
+						i.setVisible(false);
+					}
+					btnInventoryChange.setVisible(false);
 				}
-				tglbtnNewToggleButton.setText("Actions    X " + crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves);
-				
-				//Disable actions after number of moves == 0
-				if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves == 0) {
-					btnEat.setEnabled(false);
+
+			}
+		});
+		
+		for (JButton i : btnList) {
+			i.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves -= 1;
+					btnUseItem.setEnabled(false);
+					btnUseItem.setSelected(false);
 					btnSleep.setEnabled(false);
 					btnRepairShip.setEnabled(false);
 					btnLoot.setEnabled(false);
 					btnExplorePlanet.setEnabled(false);
 					tglbtnNewToggleButton.setSelected(false);
-					tglbtnNewToggleButton.setEnabled(false);
+					tglbtnNewToggleButton.setText("Actions    X " + crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves);
+					if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves <= 0) {
+						tglbtnNewToggleButton.setEnabled(false);
+					}
+					tglbtnNewToggleButton.revalidate();
+					tglbtnNewToggleButton.repaint();
 					
-//					for (JButton i: linkedList) {
-//						if (GameEnvironment.currentplayer == linkedList.indexOf(i)) {
-//							i.setEnabled(false);
-//							i.revalidate();
-//							i.repaint();
-//						}
-//					}
-					
+					int k = 0;
+					while (btnList.size() - k > k) {
+						btnList.get(k).setVisible(false);
+						k += 1;
+					}
 					
 				}
-				tglbtnNewToggleButton.revalidate();
-				tglbtnNewToggleButton.repaint();
-			}
-		});
-		
-//		if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves == 0) {
-//			btnNewButton.setEnabled(false);
-//			tglbtnNewToggleButton.setEnabled(false);
-//			btnNewButton.revalidate();
-//			btnNewButton.repaint();
-//			btnNewButton.getText();
-//		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			});
+		}
+
+
+
 		
 		
 		
@@ -577,7 +654,7 @@ public class MainGame extends JFrame {
 						
 						//reset number of moves
 						i.NumberOfMoves = 2;
-						for (JButton j: linkedList) {
+						for (JButton j: btnList) {
 							j.setEnabled(true);
 							j.revalidate();
 							j.repaint();
@@ -600,6 +677,9 @@ public class MainGame extends JFrame {
 				}
 				btnNewButton_1.revalidate();
 				btnNewButton_1.repaint();
+				tglbtnNewToggleButton.setText("Actions    X " + crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves);
+				tglbtnNewToggleButton.revalidate();
+				tglbtnNewToggleButton.repaint();
 			}
 		});
 		
