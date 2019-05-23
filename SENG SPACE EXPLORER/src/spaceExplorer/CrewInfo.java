@@ -64,12 +64,12 @@ public class CrewInfo {
 	 */
 	
 	public static void main(String[] args) {
-//		CrewInfo crewInfo = new CrewInfo();
+		CrewInfo crewInfo = new CrewInfo();
 //		crewInfo.addMember(Type.TYPE1, "Mario");
 //		crewInfo.addMember(Type.TYPE2, "Jeff");
 //		crewInfo.addMember(Type.TYPE3, "Brad");
 //		crewInfo.addMember(Type.TYPE4, "Ryan");
-//		crewInfo.addFoodItem(Food.FOOD1);
+//		crewInfo.addFoodItem(Food.BREAD);
 //		crewInfo.addFoodItem(Food.FOOD2);
 //		crewInfo.addFoodItem(Food.FOOD3);
 

@@ -5,46 +5,54 @@ package spaceExplorer;
  */
 
 enum Food {
-	FOOD1, FOOD2, FOOD3, FOOD4, FOOD5, FOOD6
+	CHICKEN, BURGER, TOFFEE, TEA, ICECREAM, BREAD
 }
 
 public class FoodItem {
 	private String name;
 	private int price;
 	private int nutrition;
+	public String imageIcon;
+	public int foodCount = 1;
 	Food food;
 	
 	public FoodItem(Food food) {
         switch (food) {
-        case FOOD1:
-            name = "FOOD1";
-            price = 100;
-            nutrition = 10;
+        case CHICKEN:
+            name = "Chicken";
+            price = 30;
+            nutrition = 25;
+            imageIcon = "/spaceExplorer/Chicken.png";
             break;
-        case FOOD2:
-            name = "FOOD2";
-            price = 100;
-            nutrition = 10;
+        case BURGER:
+            name = "Burger";
+            price = 23;
+            nutrition = 15;
+            imageIcon = "/spaceExplorer/burger.png";
             break;
-        case FOOD3:
-            name = "FOOD3";
-            price = 100;
-            nutrition = 10;
+        case TOFFEE:
+            name = "Toffee";
+            price = 5;
+            nutrition = 2;
+            imageIcon = "/spaceExplorer/Toffee.png";
             break;
-        case FOOD4:
-            name = "FOOD4";
-            price = 100;
-            nutrition = 10;
+        case TEA:
+            name = "Tea";
+            price = 8;
+            nutrition = 3;
+            imageIcon = "/spaceExplorer/tea.png";
             break;
-        case FOOD5:
-            name = "FOOD5";
-            price = 100;
-            nutrition = 10;
+        case ICECREAM:
+            name = "Ice Cream";
+            price = 10;
+            nutrition = 5;
+            imageIcon = "/spaceExplorer/ice cream.png";
             break;
-        case FOOD6:
-            name = "FOOD6";
-            price = 100;
+        case BREAD:
+            name = "Bread";
+            price = 18;
             nutrition = 10;
+            imageIcon = "/spaceExplorer/Bread.png";
             break;
         }	
 	}
