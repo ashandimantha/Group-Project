@@ -9,9 +9,9 @@ enum Food {
 }
 
 public class FoodItem {
-	private String name;
-	private int price;
-	private int nutrition;
+	public String name;
+	public int price;
+	public int nutrition;
 	public String imageIcon;
 	public int foodCount = 1;
 	Food food;
@@ -19,25 +19,25 @@ public class FoodItem {
 	public FoodItem(Food food) {
         switch (food) {
         case CHICKEN:
-            name = "Chicken";
+            name = "CHICKEN";
             price = 30;
             nutrition = 25;
             imageIcon = "/spaceExplorer/Chicken.png";
             break;
         case BURGER:
-            name = "Burger";
+            name = "BURGER";
             price = 23;
             nutrition = 15;
             imageIcon = "/spaceExplorer/burger.png";
             break;
         case TOFFEE:
-            name = "Toffee";
+            name = "TOFFEE";
             price = 5;
             nutrition = 2;
             imageIcon = "/spaceExplorer/Toffee.png";
             break;
         case TEA:
-            name = "Tea";
+            name = "TEA";
             price = 8;
             nutrition = 3;
             imageIcon = "/spaceExplorer/tea.png";
@@ -49,7 +49,7 @@ public class FoodItem {
             imageIcon = "/spaceExplorer/ice cream.png";
             break;
         case BREAD:
-            name = "Bread";
+            name = "BREAD";
             price = 18;
             nutrition = 10;
             imageIcon = "/spaceExplorer/Bread.png";

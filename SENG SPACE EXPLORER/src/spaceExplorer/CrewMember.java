@@ -17,6 +17,7 @@ public class CrewMember {
 	public boolean hasPlague = false;
 	public boolean easterEgg = false;
 	public String ability;
+	public String characterimg;
 	
 	int healthDecrease;
 	int hungerDecrease;
@@ -31,12 +32,14 @@ public class CrewMember {
             hungerDecrease = 10;
             tirednessDecrease = 10;
             ability = "Repairs the ship faster";
+            characterimg = "/spaceExplorerImages/Chracter 0.png";
             break;
         case TYPE2:
             healthDecrease = 10;
             hungerDecrease = 30;
             tirednessDecrease = 10;
             ability = "Regenerate health over time";
+            characterimg = "/spaceExplorerImages/character 3.png";
             break;
         case TYPE3:
             healthDecrease = 20;
@@ -44,24 +47,28 @@ public class CrewMember {
             tirednessDecrease = 15;
             ability = "Fasting";
             easterEgg = true;
+            characterimg = "/spaceExplorerImages/character 1.png";
             break;
         case TYPE4:
             healthDecrease = 10;
             hungerDecrease = 20;
             tirednessDecrease = 10;
             ability = "Work extra hours";
+            characterimg = "/spaceExplorerImages/character 2.png";
             break;
         case TYPE5:
             healthDecrease = 15;
             hungerDecrease = 10;
             tirednessDecrease = 10;
             ability = "Increased armour";
+            characterimg = "/spaceExplorerImages/character 4.png";
             break;
         case TYPE6:
             healthDecrease = 10;
             hungerDecrease = 10;
             tirednessDecrease = 20;
             ability = "High chance of finding loot";
+            characterimg = "/spaceExplorerImages/character 5.png";
             break;
         }	
 	}
@@ -92,9 +99,9 @@ public class CrewMember {
 		return NumberOfMoves;
 	}
 	
-	public void feed(FoodItem food) {
-		NumberOfMoves -= 1;
-		hunger += food.getNutrition();
+	public void feed(int food) {
+//		NumberOfMoves -= 1;
+		hunger -= food;
 	}
 	
 	public void consumeMedicalItem(MedicalItem item) {
@@ -110,7 +117,7 @@ public class CrewMember {
 	
 	public void sleep() {
 		NumberOfMoves -= 1;
-		tiredness = 0;
+		tiredness -= 60;
 	}
 	
 	public String getStatus() {

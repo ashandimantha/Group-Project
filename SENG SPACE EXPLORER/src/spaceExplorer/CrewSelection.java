@@ -95,25 +95,25 @@ public class CrewSelection extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(196, 251, 347, 41);
+		lblNewLabel.setBounds(245, 251, 347, 41);
 		
 		JLabel lblCharacter = new JLabel("Character :");
 		lblCharacter.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCharacter.setBounds(82, 251, 116, 41);
+		lblCharacter.setBounds(131, 251, 116, 41);
 		
 		JLabel lblAbility = new JLabel("Ability      :");
 		lblAbility.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAbility.setBounds(82, 300, 104, 25);
+		lblAbility.setBounds(131, 300, 104, 25);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(196, 300, 347, 25);
+		lblNewLabel_1.setBounds(245, 300, 347, 25);
 		
 		JButton btnAdd = new JButton("ADD >");
-		btnAdd.setBounds(794, 282, 126, 46);
+		btnAdd.setBounds(831, 322, 126, 46);
 		
 		JButton btnReset = new JButton("< REMOVE");
-		btnReset.setBounds(794, 339, 126, 46);
+		btnReset.setBounds(831, 375, 126, 46);
 		
 		JLabel lblSelectCharacter = new JLabel("Choose your team");
 		lblSelectCharacter.setHorizontalAlignment(SwingConstants.CENTER);
@@ -123,7 +123,7 @@ public class CrewSelection extends JFrame {
 		JButton btnNewButton = new JButton("Start Adventure");
 		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnNewButton.setFont(new Font("Palatino Linotype", Font.BOLD, 30));
-		btnNewButton.setBounds(495, 568, 277, 61);
+		btnNewButton.setBounds(494, 569, 277, 61);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -140,23 +140,23 @@ public class CrewSelection extends JFrame {
 		
 		JLabel lblYourTeam = new JLabel("Your team\r\n");
 		lblYourTeam.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYourTeam.setBounds(906, 202, 232, 46);
+		lblYourTeam.setBounds(940, 205, 232, 46);
 		lblYourTeam.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
 		
 		JLabel lblCharacterInfo = new JLabel("Character Info");
-		lblCharacterInfo.setBounds(132, 210, 232, 30);
+		lblCharacterInfo.setBounds(141, 213, 232, 30);
 		lblCharacterInfo.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(946, 238, 152, 60);
+		panel.setBounds(984, 241, 152, 60);
 		panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(946, 305, 152, 60);
+		panel_1.setBounds(984, 308, 152, 60);
 		panel_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(946, 371, 152, 60);
+		panel_2.setBounds(984, 374, 152, 60);
 		panel_2.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		contentPane.setLayout(null);
 		contentPane.add(lblSelectCharacter);
@@ -181,9 +181,8 @@ public class CrewSelection extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon("C:\\Users\\Ashan Perera\\Downloads\\rsz_1pinclipartcom_free-clip-art-online_12627.png"));
 		lblImage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImage.setBounds(495, 193, 277, 347);
+		lblImage.setBounds(494, 193, 277, 365);
 		contentPane.add(lblImage);
 		
 		JSeparator separator = new JSeparator();
@@ -194,7 +193,7 @@ public class CrewSelection extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_3.setBounds(946, 437, 152, 60);
+		panel_3.setBounds(984, 440, 152, 60);
 		contentPane.add(panel_3);
 		
 		//character info		
@@ -205,6 +204,8 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE1;
 				crewMember.setType(charType);
 				
+				
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 				lblNewLabel_1.setText(crewMember.ability);
 			}
 		});
@@ -216,6 +217,7 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE2;
 				crewMember.setType(charType);
 				lblNewLabel_1.setText(crewMember.ability);
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 			}
 		});
 		
@@ -226,6 +228,7 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE3;
 				crewMember.setType(charType);
 				lblNewLabel_1.setText(crewMember.ability);
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 			}
 		});
 		
@@ -236,6 +239,7 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE4;
 				crewMember.setType(charType);
 				lblNewLabel_1.setText(crewMember.ability);
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 			}
 		});
 		
@@ -246,6 +250,7 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE5;
 				crewMember.setType(charType);
 				lblNewLabel_1.setText(crewMember.ability);
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 			}
 		});
 		
@@ -256,6 +261,7 @@ public class CrewSelection extends JFrame {
 				charType = spaceExplorer.Type.TYPE6;
 				crewMember.setType(charType);
 				lblNewLabel_1.setText(crewMember.ability);
+				lblImage.setIcon(new ImageIcon(CrewSelection.class.getResource(crewMember.characterimg)));
 			}
 		});
 		
@@ -276,7 +282,7 @@ public class CrewSelection extends JFrame {
 				if (crewinfo.CrewList.size() <= 4) {					//add member icon
 					for (CrewMember i : crewinfo.getCrewList()) {
 						JButton bttn = new JButton(i.name);
-						bttn.setBounds(956, 250 + j, 132, 38);			//956, 355, 132, 38
+						bttn.setBounds(992, 250 + j, 132, 38);			//956, 355, 132, 38
 						contentPane.add(bttn);
 						bttn.repaint();
 						j += 65;
