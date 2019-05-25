@@ -1,38 +1,44 @@
 package spaceExplorer;
 
+import javax.swing.ImageIcon;
+
 /**
  * Note: medicine name and attributes should be changed
  */
 
-enum Medicine {
-	MEDICINE1, MEDICINE2, MEDICINE3
-}
+import spaceExplorer.Medicine;
+
 
 public class MedicalItem {
 	private String name;
 	private boolean CuresPlague = false;
 	private int HealthIncrease = 0;
 	private int price;
+	public String medimg;
+	public int medCount = 1;
 	
 	Medicine medicine;
 	
 	public MedicalItem(Medicine medicine) {
         switch (medicine) {
         case MEDICINE1:
-            name = "MEDICINE1";
-            price = 100;
-            HealthIncrease = 50;
-            CuresPlague = true;
+            name = "Syringe";
+            price = 40;
+            HealthIncrease = 60;
+            CuresPlague = true;				//label_1.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/syring.png")));
+            medimg = "/spaceExplorerImages/syring.png";
             break;
         case MEDICINE2:
-            name = "MEDICINE2";
-            price = 50;
-            HealthIncrease = 50;
+            name = "Painkiller";
+            price = 25;
+            HealthIncrease = 20;
+            medimg = "/spaceExplorerImages/Painkillers1.png";
             break;
         case MEDICINE3:
-            name = "MEDICINE3";
-            price = 30;
-            HealthIncrease = 35;
+            name = "Bandage";
+            price = 5;
+            HealthIncrease = 10;
+            medimg = "/spaceExplorerImages/Bandage1.png";
             break;
             }
 	}

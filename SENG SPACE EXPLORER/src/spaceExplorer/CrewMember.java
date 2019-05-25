@@ -4,9 +4,7 @@ package spaceExplorer;
  * note: The member type and the attributes should be changed
  */
 
-enum Type {
-	TYPE1, TYPE2, TYPE3, TYPE4, TYPE5, TYPE6
-}
+import spaceExplorer.Type;
 
 public class CrewMember {
 	public String name = "Untitled";
@@ -100,7 +98,7 @@ public class CrewMember {
 	}
 	
 	public void feed(int food) {
-//		NumberOfMoves -= 1;
+		NumberOfMoves -= 1;
 		hunger -= food;
 	}
 	

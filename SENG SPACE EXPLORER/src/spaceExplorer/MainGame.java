@@ -54,14 +54,18 @@ import java.awt.ComponentOrientation;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import java.awt.Dimension;
 
 public class MainGame extends JFrame {
 
 	private JPanel contentPane;
 	private String MemberName;
-	public LinkedList<JButton> btnList1 = new LinkedList<JButton>();
-	public LinkedList<JButton> btnList2 = new LinkedList<JButton>();
-	public LinkedList<JLabel> lblItemCountList = new LinkedList<JLabel>();
+	public LinkedList<JButton> btnFoodList = new LinkedList<JButton>();				
+	public LinkedList<JButton> btnMedList = new LinkedList<JButton>();
+	public LinkedList<JLabel> lblItemCountList = new LinkedList<JLabel>();			//food item count list
+	public LinkedList<JLabel> lblItemCountList2 = new LinkedList<JLabel>();			//Med item count list
 	
 	/**
 	 * Launch the application.
@@ -86,6 +90,7 @@ public class MainGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1280, 720);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -187,7 +192,8 @@ public class MainGame extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel.setBounds(576, 344, 299, 319);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -218,7 +224,8 @@ public class MainGame extends JFrame {
 		panel.add(btnLoot);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_1.setBounds(27, 461, 522, 202);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -291,6 +298,8 @@ public class MainGame extends JFrame {
 		label.setVisible(false);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Actions");
+		tglbtnNewToggleButton.setBackground(UIManager.getColor("Button.background"));
+		tglbtnNewToggleButton.setBorder(UIManager.getBorder("Button.border"));
 		tglbtnNewToggleButton.setEnabled(false);
 		tglbtnNewToggleButton.setBounds(637, 280, 177, 53);
 		contentPane.add(tglbtnNewToggleButton);
@@ -303,6 +312,7 @@ public class MainGame extends JFrame {
 					btnRepairShip.setEnabled(true);
 					btnLoot.setEnabled(true);
 					btnExplorePlanet.setEnabled(true);
+					panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 204, 153), null));
 				} else {
 //					System.out.println("B");
 					btnUseItem.setEnabled(false);
@@ -311,18 +321,25 @@ public class MainGame extends JFrame {
 					btnRepairShip.setEnabled(false);
 					btnLoot.setEnabled(false);
 					btnExplorePlanet.setEnabled(false);
+					panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+					panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 					
-					for (JButton i: btnList1) {
+					for (JButton i: btnFoodList) {
 						i.setVisible(false);
 					}
 					
-					for (JButton i: btnList2) {
+					for (JButton i: btnMedList) {
 						i.setVisible(false);
 					}
 					
 					for (JLabel i: lblItemCountList) {
 						i.setVisible(false);
 					}
+					
+					for (JLabel i: lblItemCountList2) {
+						i.setVisible(false);
+					}
+					
 					btnInventoryChange.setVisible(false);
 					lblInventory.setVisible(false);
 				}
@@ -344,7 +361,7 @@ public class MainGame extends JFrame {
 		label_1.setBorder(UIManager.getBorder("Button.border"));
 		label_1.setVisible(false);
 		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_1.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/syring.png")));
+//		label_1.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/syring.png")));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setBounds(221, 107, 79, 75);
 		panel_1.add(label_1);
@@ -355,7 +372,7 @@ public class MainGame extends JFrame {
 		label_2.setHorizontalTextPosition(SwingConstants.LEFT);
 		label_2.setVisible(false);
 		label_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_2.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Painkillers1.png")));
+//		label_2.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Painkillers1.png")));
 		label_2.setBounds(371, 107, 79, 75);
 		panel_1.add(label_2);
 		
@@ -367,7 +384,7 @@ public class MainGame extends JFrame {
 		lblMeditems.setBounds(71, 107, 79, 75);
 		panel_1.add(lblMeditems);
 //		ImageIcon img = lblMeditems.getIcon();
-		lblMeditems.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Bandage1.png")));
+//		lblMeditems.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Bandage1.png")));
 		lblMeditems.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblX = new JLabel("");
@@ -407,10 +424,193 @@ public class MainGame extends JFrame {
 		panel_1.add(lblX_5);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setVisible(false);
-		panel_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_2.setBounds(902, 95, 334, 491);
+		panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 204), new Color(51, 51, 255)));
+		panel_2.setBounds(902, 96, 334, 491);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JButton lblStoreitems = new JButton("");
+		lblStoreitems.setToolTipText("DECREASE HUNGER BY 25%");
+		lblStoreitems.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblStoreitems.setContentAreaFilled(false);
+		lblStoreitems.setBounds(25, 20, 79, 66);
+		panel_2.add(lblStoreitems);
+		lblStoreitems.setPreferredSize(new Dimension(2, 2));
+		lblStoreitems.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		lblStoreitems.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStoreitems.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/Chicken.png")));
+		
+		JButton label_3 = new JButton("");
+		label_3.setToolTipText("DECREASE HUNGER BY 15%");
+		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_3.setContentAreaFilled(false);
+		label_3.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/burger.png")));
+		label_3.setBounds(128, 20, 79, 66);
+		label_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_3);
+		
+		JButton label_4 = new JButton("");
+		label_4.setToolTipText("DECREASE HUNGER BY 10%");
+		label_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_4.setContentAreaFilled(false);
+		label_4.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/Bread.png")));
+		label_4.setBounds(231, 20, 79, 66);
+		label_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_4);
+		
+		JButton label_5 = new JButton("");
+		label_5.setToolTipText("DECREASE HUNGER BY 5%");
+		label_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_5.setContentAreaFilled(false);
+		label_5.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/ice cream.png")));
+		label_5.setBounds(25, 170, 79, 66);
+		label_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_5);
+		
+		JButton label_6 = new JButton("");
+		label_6.setToolTipText("DECREASE HUNGER BY 3%");
+		label_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_6.setContentAreaFilled(false);
+		label_6.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/tea.png")));
+		label_6.setBounds(128, 170, 79, 66);
+		label_6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_6);
+		
+		JButton label_7 = new JButton("");
+		label_7.setToolTipText("DECREASE HUNGER BY 2%");
+		label_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_7.setContentAreaFilled(false);
+		label_7.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorer/Toffee.png")));
+		label_7.setBounds(231, 170, 79, 66);
+		label_7.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 102, 0), new Color(204, 255, 0)));
+		label_7.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_7);
+		
+		JButton label_8 = new JButton("");
+		label_8.setToolTipText("+60HP (Cures Plague)");
+		label_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_8.setContentAreaFilled(false);
+		label_8.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/syring.png")));
+		label_8.setBounds(25, 320, 79, 89);
+		label_8.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(204, 0, 0), new Color(255, 51, 102)));
+		label_8.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_8);
+		
+		JButton label_9 = new JButton("");
+		label_9.setToolTipText("+20HP");
+		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_9.setContentAreaFilled(false);
+		label_9.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Painkillers1.png")));
+		label_9.setBounds(128, 320, 79, 89);
+		label_9.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(204, 0, 0), new Color(255, 51, 102)));
+		label_9.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_9);
+		
+		JButton label_10 = new JButton("");
+		label_10.setToolTipText("+10HP");
+		label_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_10.setContentAreaFilled(false);
+		label_10.setIcon(new ImageIcon(MainGame.class.getResource("/spaceExplorerImages/Bandage1.png")));
+		label_10.setBounds(231, 320, 79, 89);
+		label_10.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(204, 0, 0), new Color(255, 51, 102)));
+		label_10.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(label_10);
+		
+		JButton btnBuy = new JButton("Buy");
+		btnBuy.setContentAreaFilled(false);
+		btnBuy.setBounds(25, 97, 79, 23);
+		panel_2.add(btnBuy);
+		
+		JButton button_9 = new JButton("Buy");
+		button_9.setContentAreaFilled(false);
+		button_9.setBounds(128, 97, 79, 23);
+		panel_2.add(button_9);
+		
+		JButton button_10 = new JButton("Buy");
+		button_10.setContentAreaFilled(false);
+		button_10.setBounds(231, 97, 79, 23);
+		panel_2.add(button_10);
+		
+		JButton button_11 = new JButton("Buy");
+		button_11.setContentAreaFilled(false);
+		button_11.setBounds(25, 247, 79, 23);
+		panel_2.add(button_11);
+		
+		JButton button_12 = new JButton("Buy");
+		button_12.setContentAreaFilled(false);
+		button_12.setBounds(128, 247, 79, 23);
+		panel_2.add(button_12);
+		
+		JButton button_13 = new JButton("Buy");
+		button_13.setContentAreaFilled(false);
+		button_13.setBounds(231, 247, 79, 23);
+		panel_2.add(button_13);
+		
+		JButton button_14 = new JButton("Buy");
+		button_14.setContentAreaFilled(false);
+		button_14.setBounds(231, 423, 79, 23);
+		panel_2.add(button_14);
+		
+		JButton button_15 = new JButton("Buy");
+		button_15.setContentAreaFilled(false);
+		button_15.setBounds(128, 423, 79, 23);
+		panel_2.add(button_15);
+		
+		JButton button_16 = new JButton("Buy");
+		button_16.setContentAreaFilled(false);
+		button_16.setBounds(25, 423, 79, 23);
+		panel_2.add(button_16);
+		
+		JButton btnSell = new JButton("Sell");
+		btnSell.setContentAreaFilled(false);
+		btnSell.setBounds(25, 131, 79, 23);
+		panel_2.add(btnSell);
+		
+		JButton button_17 = new JButton("Sell");
+		button_17.setContentAreaFilled(false);
+		button_17.setBounds(128, 131, 79, 23);
+		panel_2.add(button_17);
+		
+		JButton button_18 = new JButton("Sell");
+		button_18.setContentAreaFilled(false);
+		button_18.setBounds(231, 131, 79, 23);
+		panel_2.add(button_18);
+		
+		JButton button_19 = new JButton("Sell");
+		button_19.setContentAreaFilled(false);
+		button_19.setBounds(25, 281, 79, 23);
+		panel_2.add(button_19);
+		
+		JButton button_20 = new JButton("Sell");
+		button_20.setContentAreaFilled(false);
+		button_20.setBounds(128, 281, 79, 23);
+		panel_2.add(button_20);
+		
+		JButton button_21 = new JButton("Sell");
+		button_21.setContentAreaFilled(false);
+		button_21.setBounds(231, 281, 79, 23);
+		panel_2.add(button_21);
+		
+		JButton button_22 = new JButton("Sell");
+		button_22.setContentAreaFilled(false);
+		button_22.setBounds(25, 457, 79, 23);
+		panel_2.add(button_22);
+		
+		JButton button_23 = new JButton("Sell");
+		button_23.setContentAreaFilled(false);
+		button_23.setBounds(128, 457, 79, 23);
+		panel_2.add(button_23);
+		
+		JButton button_24 = new JButton("Sell");
+		button_24.setContentAreaFilled(false);
+		button_24.setBounds(231, 457, 79, 23);
+		panel_2.add(button_24);
 		
 		
 		JToggleButton btnSpaceStore = new JToggleButton("Space Outpost");
@@ -419,7 +619,20 @@ public class MainGame extends JFrame {
 		btnSpaceStore.setBounds(902, 21, 334, 53);
 		contentPane.add(btnSpaceStore);
 		
+		JLabel lblX_6 = new JLabel("");
+		lblX_6.setFont(new Font("Agency FB", Font.BOLD, 20));
+		lblX_6.setBounds(160, 137, 63, 45);
+		panel_1.add(lblX_6);
 		
+		JLabel lblX_7 = new JLabel("");
+		lblX_7.setFont(new Font("Agency FB", Font.BOLD, 20));
+		lblX_7.setBounds(310, 138, 63, 43);
+		panel_1.add(lblX_7);
+		
+		JLabel lblX_8 = new JLabel("");
+		lblX_8.setFont(new Font("Agency FB", Font.BOLD, 20));
+		lblX_8.setBounds(459, 138, 63, 43);
+		panel_1.add(lblX_8);
 		
 		
 		
@@ -456,26 +669,28 @@ public class MainGame extends JFrame {
 			lblMoney.setText("Money: $" + GameEnvironment.money);
 		}
 		
+		
+		//Adding food to game
 		crewinfo.addFoodItem(Food.BREAD);
-//		crewinfo.addFoodItem(Food.BURGER);
-//		crewinfo.addFoodItem(Food.CHICKEN);
-//		crewinfo.addFoodItem(Food.ICECREAM);
-//		crewinfo.addFoodItem(Food.TOFFEE);
 		crewinfo.addFoodItem(Food.TEA);
+		
+		//Adding Medicine to game
+		crewinfo.addMedicalItem(Medicine.MEDICINE3);
+		crewinfo.addMedicalItem(Medicine.MEDICINE2);
 			
 		//adding inventory buttons to a list
 		//food items
-		btnList1.add(button_3);
-		btnList1.add(button_4);
-		btnList1.add(button_5);
-		btnList1.add(button_6);
-		btnList1.add(button_7);
-		btnList1.add(button_8);
+		btnFoodList.add(button_3);
+		btnFoodList.add(button_4);
+		btnFoodList.add(button_5);
+		btnFoodList.add(button_6);
+		btnFoodList.add(button_7);
+		btnFoodList.add(button_8);
 		
 		//med items
-		btnList2.add(label_1);
-		btnList2.add(label_2);
-		btnList2.add(lblMeditems);
+		btnMedList.add(lblMeditems);
+		btnMedList.add(label_1);
+		btnMedList.add(label_2);
 		
 		//Item count for food
 		lblItemCountList.add(lblX);
@@ -485,21 +700,16 @@ public class MainGame extends JFrame {
 		lblItemCountList.add(lblX_4);
 		lblItemCountList.add(lblX_5);
 		
-		JLabel lblX_6 = new JLabel("");
-		lblX_6.setFont(new Font("Agency FB", Font.BOLD, 20));
-		lblX_6.setBounds(160, 137, 63, 45);
-		panel_1.add(lblX_6);
+		//Item count for meds
+		lblItemCountList2.add(lblX_6);
+		lblItemCountList2.add(lblX_7);
+		lblItemCountList2.add(lblX_8);
 		
-		JLabel lblX_7 = new JLabel("");
-		lblX_7.setFont(new Font("Agency FB", Font.BOLD, 20));
-		lblX_7.setBounds(310, 138, 63, 43);
-		panel_1.add(lblX_7);
-		
-		JLabel lblX_8 = new JLabel("");
-		lblX_8.setFont(new Font("Agency FB", Font.BOLD, 20));
-		lblX_8.setBounds(459, 138, 63, 43);
-		panel_1.add(lblX_8);
 		for (JLabel i: lblItemCountList) {
+			i.setVisible(false);
+		}
+		
+		for (JLabel i: lblItemCountList2) {
 			i.setVisible(false);
 		}
 		
@@ -688,6 +898,12 @@ public class MainGame extends JFrame {
 			});
 		}
 		
+
+		btnLoot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		
 		/*
@@ -703,19 +919,15 @@ public class MainGame extends JFrame {
 						//ADDING ITEMS TO THE INVENTORY
 						lblInventory.setVisible(true);
 						btnInventoryChange.setVisible(true);
-						btnInventoryChange.setText("Space Food");
+						btnInventoryChange.setText("Healing Items");
+						panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 204, 153), null));
 						
-
-						
-						
-						int j = 0;
 						for (FoodItem i: crewinfo.FoodList) {						//FOOD BUTTON ICONS
-							btnList1.get(j).setVisible(true);
-							btnList1.get(j).setIcon(new ImageIcon(MainGame.class.getResource(i.imageIcon)));
-							btnList1.get(j).setName(i.name);
-							lblItemCountList.get(j).setVisible(true);
-							lblItemCountList.get(j).setText("X " + i.foodCount);
-							j += 1;
+							btnFoodList.get(crewinfo.FoodList.indexOf(i)).setVisible(true);
+							btnFoodList.get(crewinfo.FoodList.indexOf(i)).setIcon(new ImageIcon(MainGame.class.getResource(i.imageIcon)));
+							btnFoodList.get(crewinfo.FoodList.indexOf(i)).setName(i.name);
+							lblItemCountList.get(crewinfo.FoodList.indexOf(i)).setVisible(true);
+							lblItemCountList.get(crewinfo.FoodList.indexOf(i)).setText("X " + i.foodCount);
 						}
 					}
 					
@@ -735,19 +947,25 @@ public class MainGame extends JFrame {
 					
 					
 				} else {													//WHEN BUTTON NOT SELECTED
-					for (JButton i: btnList1) {
+					for (JButton i: btnFoodList) {
 						i.setVisible(false);
 					}
-					for (JButton j: btnList2) {
+					for (JButton j: btnMedList) {
 						j.setVisible(false);
 					}
 					for (JLabel s: lblItemCountList) {
 						s.setVisible(false);
 					}
+					
+					for (JLabel s: lblItemCountList2) {
+						s.setVisible(false);
+					}
+					
 					btnInventoryChange.setText("Space Food");
 					btnInventoryChange.setVisible(false);
 					btnInventoryChange.revalidate();
 					lblInventory.setVisible(false);
+					panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 				}
 
 			}
@@ -756,63 +974,73 @@ public class MainGame extends JFrame {
 		
 		/*
 		 * 
-		 * Inventory food and medicine change button
+		 * Inventory switch food and medicine button
 		 * 
 		 */
 		btnInventoryChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (btnInventoryChange.getText() == "Space Food") {
-					btnInventoryChange.setText("Medications");
+				if (btnInventoryChange.getText() == "Healing Items") {
+					btnInventoryChange.setText("Space Food");
 					
-					for (JButton i: btnList1) {
+					for (JButton i: btnFoodList) {								//food buttons
 						i.setVisible(false);
 					}
-					for (JLabel s: lblItemCountList) {
-						s.setVisible(false);
+					for (JLabel i: lblItemCountList) {
+						i.setVisible(false);
 					}
 					
-					for (JButton j: btnList2) {
-						j.setVisible(true);
+					
+										
+					for (MedicalItem i: crewinfo.MedicalList) {						//FOOD BUTTON ICONS
+						btnMedList.get(crewinfo.MedicalList.indexOf(i)).setVisible(true);
+						btnMedList.get(crewinfo.MedicalList.indexOf(i)).setIcon(new ImageIcon(MainGame.class.getResource(i.medimg)));
+						lblItemCountList2.get(crewinfo.MedicalList.indexOf(i)).setVisible(true);
+						lblItemCountList2.get(crewinfo.MedicalList.indexOf(i)).setText("X " + i.medCount);
+						
 					}
+					
 				} else {
-					btnInventoryChange.setText("Space Food");
+					btnInventoryChange.setText("Healing Items");
 					
 					int j = 0;
 					for (FoodItem i: crewinfo.FoodList) {						//FOOD BUTTON ICONS
-						btnList1.get(j).setVisible(true);
-						btnList1.get(j).setIcon(new ImageIcon(MainGame.class.getResource(i.imageIcon)));
+						btnFoodList.get(j).setVisible(true);
+						btnFoodList.get(j).setIcon(new ImageIcon(MainGame.class.getResource(i.imageIcon)));
 						j += 1;
 					}
 					
-					for (JButton i: btnList2) {
+					for (JButton i: btnMedList) {
 						i.setVisible(false);
 					}
-					for (JLabel s: lblItemCountList) {
-						s.setVisible(true);
+					for (JLabel i: lblItemCountList) {
+						i.setVisible(true);
 					}
 					
+					for (JLabel i: lblItemCountList2) {
+						i.setVisible(false);
+					}
 				}
 			}
 		});
 		
 		
+		
 		/*
 		 * 
-		 * adding food items when clicked
+		 * Consuming food when item clicked
 		 * 
 		 */
-		for (JButton i : btnList1) {
+		for (JButton i : btnFoodList) {
 			i.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (crewinfo.FoodList.get(btnList1.indexOf(i)).foodCount != 0) {
-						crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves -= 1;
-						if (crewinfo.FoodList.get(btnList1.indexOf(i)).foodCount != 0) {
-							crewinfo.FoodList.get(btnList1.indexOf(i)).foodCount -= 1;
-							crewinfo.CrewList.get(GameEnvironment.currentplayer).feed(crewinfo.FoodList.get(btnList1.indexOf(i)).getNutrition());		//Use food item
-							progressBar_3.setValue(crewinfo.CrewList.get(GameEnvironment.currentplayer).getHunger());
-							progressBar_3.revalidate();
-							progressBar_3.repaint();
-						}
+					if (crewinfo.FoodList.get(btnFoodList.indexOf(i)).foodCount != 0 && crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves > 0) {
+						
+						crewinfo.FoodList.get(btnFoodList.indexOf(i)).foodCount -= 1;
+						crewinfo.CrewList.get(GameEnvironment.currentplayer).feed(crewinfo.FoodList.get(btnFoodList.indexOf(i)).getNutrition());		//Use food item
+						progressBar_3.setValue(crewinfo.CrewList.get(GameEnvironment.currentplayer).getHunger());
+						progressBar_3.revalidate();
+						progressBar_3.repaint();
+						
 						btnUseItem.setEnabled(false);
 						btnUseItem.setSelected(false);
 						btnSleep.setEnabled(false);
@@ -828,8 +1056,10 @@ public class MainGame extends JFrame {
 						btnInventoryChange.setVisible(false);
 						tglbtnNewToggleButton.revalidate();
 						tglbtnNewToggleButton.repaint();
+						panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+						panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 						
-						for (JButton i: btnList1) {
+						for (JButton i: btnFoodList) {
 							i.setVisible(false);
 						}
 						
@@ -841,6 +1071,56 @@ public class MainGame extends JFrame {
 			});
 		}
 
+		
+		/*
+		 * 
+		 * Consuming medicine when clicked
+		 * 
+		 */
+		for (JButton i : btnMedList) {
+			i.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (crewinfo.MedicalList.get(btnMedList.indexOf(i)).medCount != 0 && crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves > 0) {
+//						System.out.println(crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves + "A");
+//						crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves -= 1;
+//						System.out.println(crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves + "B");
+
+						crewinfo.MedicalList.get(btnMedList.indexOf(i)).medCount -= 1;
+						crewinfo.CrewList.get(GameEnvironment.currentplayer).consumeMedicalItem(crewinfo.MedicalList.get(btnMedList.indexOf(i)));		//Use food item
+						progressBar_1.setValue(crewinfo.CrewList.get(GameEnvironment.currentplayer).getHealth());
+						progressBar_1.revalidate();
+						progressBar_1.repaint();
+						
+						btnUseItem.setEnabled(false);
+						btnUseItem.setSelected(false);
+						btnSleep.setEnabled(false);
+						btnRepairShip.setEnabled(false);
+						btnLoot.setEnabled(false);
+						btnExplorePlanet.setEnabled(false);
+						tglbtnNewToggleButton.setSelected(false);
+						tglbtnNewToggleButton.setText("Actions    X " + CrewInfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves);
+						if (crewinfo.CrewList.get(GameEnvironment.currentplayer).NumberOfMoves <= 0) {
+							tglbtnNewToggleButton.setEnabled(false);
+						}
+						lblInventory.setVisible(false);
+						btnInventoryChange.setVisible(false);
+						tglbtnNewToggleButton.revalidate();
+						tglbtnNewToggleButton.repaint();
+						panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+						panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+						
+						for (JButton i: btnMedList) {
+							i.setVisible(false);
+						}
+						
+						for (JLabel i: lblItemCountList2) {
+							i.setVisible(false);
+						}
+						
+					}
+				}
+			});
+		}
 
 
 		
@@ -890,7 +1170,7 @@ public class MainGame extends JFrame {
 						
 						//reset number of moves
 						i.NumberOfMoves = 2;
-						for (JButton j: btnList1) {
+						for (JButton j: btnFoodList) {
 							j.setEnabled(true);
 							j.revalidate();
 							j.repaint();

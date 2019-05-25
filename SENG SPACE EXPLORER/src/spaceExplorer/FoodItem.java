@@ -4,9 +4,7 @@ package spaceExplorer;
  * 		to create food item FoodItem(Food.FOODNAME)
  */
 
-enum Food {
-	CHICKEN, BURGER, TOFFEE, TEA, ICECREAM, BREAD
-}
+import spaceExplorer.Food;
 
 public class FoodItem {
 	public String name;
