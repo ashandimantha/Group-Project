@@ -988,9 +988,7 @@ public class MainGame extends JFrame {
 					for (JLabel i: lblItemCountList) {
 						i.setVisible(false);
 					}
-					
-					
-										
+															
 					for (MedicalItem i: crewinfo.MedicalList) {						//FOOD BUTTON ICONS
 						btnMedList.get(crewinfo.MedicalList.indexOf(i)).setVisible(true);
 						btnMedList.get(crewinfo.MedicalList.indexOf(i)).setIcon(new ImageIcon(MainGame.class.getResource(i.medimg)));
